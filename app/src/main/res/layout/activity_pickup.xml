@@ -32,7 +32,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.691" />
+        app:layout_constraintVertical_bias="0.959" />
 
     <ImageView
         android:id="@+id/imgView"
@@ -53,7 +53,7 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/btnUpload"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintVertical_bias="0.425"
+        tools:layout_editor_absoluteX="21dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

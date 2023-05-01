@@ -32,6 +32,7 @@ public class Home extends AppCompatActivity {
 //            Intent view3 = new Intent(Home.this,About.class);
 //            startActivity(view3);
 //        });
+        Button but=findViewById(R.id.butt);
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -54,6 +55,10 @@ public class Home extends AppCompatActivity {
     }
     public void shiftbu1(View view){
         Intent view5 = new Intent(Home.this,Support.class);
+        startActivity(view5);
+    }
+    public void shiftbu3(View view){
+        Intent view5 = new Intent(Home.this,Pickup.class);
         startActivity(view5);
     }
 }

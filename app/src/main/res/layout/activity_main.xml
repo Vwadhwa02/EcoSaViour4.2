@@ -12,11 +12,11 @@
         android:layout_height="1902dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintHorizontal_bias="0.628"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.459"
-        app:srcCompat="@drawable/dall_e_2023_04_13_21_32_36___eco_savior_" />
+        app:layout_constraintVertical_bias="0.45"
+        app:srcCompat="@drawable/final_" />
 
     <Button
         android:id="@+id/button2"
