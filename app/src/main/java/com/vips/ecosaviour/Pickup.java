@@ -45,7 +45,7 @@ public class Pickup extends AppCompatActivity {
     // views for button
     private Button btnChoose, btnUpload;
 
-    // view for image view
+    // view for image view  rw
     private ImageView imageView;
 
     // Uri indicates, where the image will be picked from
@@ -53,7 +53,7 @@ public class Pickup extends AppCompatActivity {
 
 
     // request code
-    private final int PICK_IMAGE_REQUEST = 22;
+    private final int PICK_IMAGE_REQUEST = 1;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -75,17 +75,16 @@ public class Pickup extends AppCompatActivity {
 
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable
-                = new ColorDrawable(
-                Color.parseColor("#0F9D58"));
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#0F9D58"));
         actionBar.setBackgroundDrawable(colorDrawable);
 
         // initialise views
         btnChoose = findViewById(R.id.btnChoose);
         btnUpload = findViewById(R.id.btnUpload);
         imageView = findViewById(R.id.imgView);
-        EditText add;
-        add = findViewById(R.id.et);
+        EditText add=findViewById(R.id.etImage);
+        //progressDialog= findViewById(R.id.progressBar);
+
 
         // get the Firebase storage reference
         storage = FirebaseStorage.getInstance();
@@ -94,6 +93,7 @@ public class Pickup extends AppCompatActivity {
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 SelectImage();
             }
         });
@@ -102,6 +102,7 @@ public class Pickup extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 uploadImage();
             }
         });
@@ -110,14 +111,21 @@ public class Pickup extends AppCompatActivity {
     private void SelectImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
+        intent.setType("image/*");
         //get intent to choosing content page in Android
 
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setAction(intent.ACTION_GET_CONTENT);
+        //intent.setAction(intent.ACTION_GET_CONTENT);
         //intent.setAction(intent.)
         //startActivity(intent);
         startActivity(intent);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
         //startActivityForResult(intent, 100);
+    }
+
+    @Override
+    public void onTopResumedActivityChanged(boolean isTopResumedActivity) {
+        super.onTopResumedActivityChanged(isTopResumedActivity);
     }
 
     private void uploadImage() {
@@ -134,7 +142,7 @@ public class Pickup extends AppCompatActivity {
                 addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        binding.imgView.setImageURI(null);
+                        binding.imageView.setImageURI(null);
                         Toast.makeText(Pickup.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                         if (progressDialog.isShowing()) {
                             progressDialog.dismiss();
@@ -168,7 +176,7 @@ public class Pickup extends AppCompatActivity {
 
     // Override onActivityResult method
     @Override
-    protected void onActivityResult(int requestCode,int resultCode,@Nullable Intent data) {
+    protected void onActivityResult(int requestCode,int resultCode,Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -176,12 +184,13 @@ public class Pickup extends AppCompatActivity {
         // if request code is PICK_IMAGE_REQUEST and
         // resultCode is RESULT_OK
         // then set image in the image view
-        if (requestCode == 100
-                && data != null
-                && data.getData() != null) {
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode==RESULT_OK && data != null && data.getData() != null) {
 
             imageUri = data.getData();
-            binding.imgView.setImageURI(imageUri);
+            //binding.imgView.setImageURI(imageUri);
+            //Picasso.with(this).load(imageUri).into(imageView);
+            //binding.imgView.setImageURI(imageUri);
+            imageView.setImageURI(imageUri);
 
 
         }

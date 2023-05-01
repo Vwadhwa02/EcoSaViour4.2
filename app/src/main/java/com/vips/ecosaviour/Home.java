@@ -58,7 +58,7 @@ public class Home extends AppCompatActivity {
         startActivity(view5);
     }
     public void shiftbu3(View view){
-        Intent view5 = new Intent(Home.this,Pickup.class);
+        Intent view5 = new Intent(Home.this,MainActivity2.class);
         startActivity(view5);
     }
 }
