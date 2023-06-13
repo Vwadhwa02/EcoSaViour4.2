@@ -1,35 +1,126 @@
 plugins {
     id 'com.android.application'
+    id 'com.chaquo.python'
 }
-
-android {
-    namespace 'com.vips.ecosaviour'
+android {namespace 'com.vips.ecosaviour'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.vips.ecosaviour"
-        minSdk 21
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        applicationId "com.example.tiny_yolo"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
+        python {
+            pip {
+                install "opencv-contrib-python-headless"
+                install "Keras==2.3.1"
+                install "tensorflow"
+                install "numpy"
+                install "pillow"
+            }
+        }
+        defaultConfig {
+            ndk {
+                abiFilters "armeabi-v7a"
+            }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            python {
+                version "3.8"
+                buildPython "C:\\Users\\vips\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
+            }
+
+        }
+
+        defaultConfig {
+            applicationId "com.vips.ecosaviour"
+            minSdk 24
+            targetSdk 33
+            versionCode 1
+            versionName "1.0"
+
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        }
+
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+        buildFeatures {
+            viewBinding true
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    buildFeatures {
-        viewBinding true
+    dependencies {
+
+        implementation 'androidx.appcompat:appcompat:1.6.1'
+        implementation 'com.google.android.material:material:1.9.0'
+        implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+        implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+        implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+        implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+        implementation 'androidx.navigation:navigation-fragment:2.6.0'
+        implementation 'androidx.navigation:navigation-ui:2.6.0'
+        implementation 'com.google.firebase:firebase-database:20.2.2'
+        implementation 'com.google.firebase:firebase-storage:20.2.0'
+        testImplementation 'junit:junit:4.13.2'
+        androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     }
 }
+//    namespace 'com.vips.ecosaviour'
+//    compileSdk 33
+//
+//    defaultConfig {
+//        applicationId "com.example.tiny_yolo"
+//
+//        python {
+//            pip {
+//                install "opencv-contrib-python-headless"
+//                install "Keras==2.3.1"
+//                install "tensorflow"
+//                install "numpy"
+//                install "pillow"
+//            }
+//        }
+//        defaultConfig {
+//            ndk {
+//                abiFilters "armeabi-v7a"
+//            }
+//
+//            python {
+//                version "3.8"
+//                buildPython "C:\\Users\\vips\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
+//            }
+//
+//        }
+//
+//    defaultConfig {
+//        applicationId "com.vips.ecosaviour"
+//        minSdk 24
+//        targetSdk 33
+//        versionCode 1
+//        versionName "1.0"
+//
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//    }
+//
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+//    }
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+//    buildFeatures {
+//        viewBinding true
+//    }
+//}
 
 dependencies {
 

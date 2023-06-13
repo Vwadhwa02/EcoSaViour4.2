@@ -14,8 +14,7 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         webView = (WebView) findViewById(R.id.wb);
         webView.setWebViewClient(new WebViewClient());
-
-        webView.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSf--lA0ENQs6OuF1rsnwfInhG4aYlU7n0Q4yIsSdruXuuzwfA/viewform?usp=sf_link");
+        webView.loadUrl("https://forms.gle/FEn1Pb7mpP8918da8");
     }
     @Override
     public void onBackPressed(){
