@@ -28,5 +28,9 @@ public class MainActivity extends AppCompatActivity {
             Intent view2 = new Intent(MainActivity.this,MainActivity2.class);
             startActivity(view2);
         });
+        bu1.setOnClickListener((View view) ->{
+            Intent view2 = new Intent(MainActivity.this,MainActivity2.class);
+            startActivity(view2);
+        });
     }
 }
